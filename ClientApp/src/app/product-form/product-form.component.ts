@@ -16,7 +16,8 @@ export class ProductFormComponent implements OnInit {
 
   id: number;
 
-  dupe:boolean;
+  dupe: boolean;
+  reg:string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private route: ActivatedRoute, private router:Router) {
     this.route.params.subscribe(params => this.id=params['id']); 
   }
@@ -35,7 +36,7 @@ export class ProductFormComponent implements OnInit {
   }
   createFormControls() {
     this.name = new FormControl('', Validators.required);
-    this.url = new FormControl('', Validators.required);
+    this.url = new FormControl('', [Validators.required, Validators.pattern(this.reg)]);
     this.code = new FormControl('', Validators.required);
 
   }
