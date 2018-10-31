@@ -1,0 +1,25 @@
+<h1>Product List</h1>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+
+<table class='table' *ngIf="products">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Code</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of products">
+      <td>{{ p.name }}</td>
+      <td>{{ p.url }}</td>
+      <td>{{ p.code }}</td>
+      <td>
+        <button class="btn btn-info" [routerLink]="['/form',p.id]">Edit</button>
+        <button class="btn btn-danger" (click)="Delete(p.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
