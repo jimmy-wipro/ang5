@@ -96,6 +96,10 @@ namespace Abc.Products.Controllers
                     _context.Entry(product).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                 }
+                else
+                {
+                    return BadRequest();
+                }
             }
             else
             {

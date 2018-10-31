@@ -7,7 +7,7 @@
     <label for="name">Name</label>
     <input type="text" formControlName="name" class="form-control" id="name" name="name" required>
     <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-      Field is invalid
+      Product Name is required
     </div>
   </div>
 
@@ -15,7 +15,7 @@
     <label for="alterEgo">Url</label>
     <input type="text" class="form-control" id="url" formControlName="url" (change)="dupe=false">
     <div *ngIf="url.errors && (url.dirty || url.touched)" class="alert alert-danger">
-      Field is invalid
+      Enter a valid url
     </div>
   </div>
 
@@ -23,7 +23,7 @@
     <label for="alterEgo">Code</label>
     <input type="text" class="form-control" id="code" formControlName="code" (change)="dupe=false">
     <div *ngIf="code.errors && (code.dirty || code.touched)" class="alert alert-danger">
-      Field is invalid
+      Product Code is required
     </div>
   </div>
 
