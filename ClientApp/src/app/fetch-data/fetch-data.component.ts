@@ -8,9 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class FetchDataComponent {
   public products: Product[];
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    http.get<Product[]>(baseUrl + 'api/Products').subscribe(result => {
-      this.products = result;
-    }, error => console.error(error));
+    this.FetchData();
   }
   Edit(prodcuctCode:string) {
     console.log(prodcuctCode);
@@ -31,7 +29,7 @@ export class FetchDataComponent {
   }
 }
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   url: string;

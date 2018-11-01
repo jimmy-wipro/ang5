@@ -28,8 +28,9 @@
   </div>
 
   <button type="submit" [disabled]="myform.invalid" class="btn btn-success">Submit</button>
+  <button type="button" [disabled]="!isEditMode" class="btn btn-danger" (click)="Delete()">Delete</button>
   <div *ngIf="dupe" class="alert alert-danger">
-   Duplicate data
+    Duplicate data
   </div>
 </form>
 

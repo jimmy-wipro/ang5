@@ -68,6 +68,14 @@ namespace Abc.Products
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<ProductContext>();
+                //context.Database.EnsureCreated();
+                context.Database.Migrate();
+            }
         }
     }
 }

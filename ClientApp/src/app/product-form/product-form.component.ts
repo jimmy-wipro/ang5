@@ -17,9 +17,13 @@ export class ProductFormComponent implements OnInit {
   id: number;
 
   dupe: boolean;
+  isEditMode: boolean;
+
   reg:string = '(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?';
   constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string, private route: ActivatedRoute, private router:Router) {
-    this.route.params.subscribe(params => this.id=params['id']); 
+    this.route.params.subscribe(params => this.id = params['id']);
+
+    this.isEditMode = (this.id == 0 || this.id==undefined) ? false : true;
   }
   ngOnInit() {
     this.createFormControls();
@@ -48,8 +52,14 @@ export class ProductFormComponent implements OnInit {
       name: this.name
     });
   }
-
-
+ 
+  Delete() {
+    console.log(this.id);
+    this.http.delete(this.baseUrl + 'api/Products/' + this.id).subscribe(result => {
+      console.log(result);
+      this.router.navigate(['/fetch-data']);
+    }, error => console.error(error));
+  }
 
   Add(product: Product) {
 

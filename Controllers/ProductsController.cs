@@ -91,7 +91,7 @@ namespace Abc.Products.Controllers
             }
             if (_context.Products.Any(x=>x.Id==product.Id))
             {
-                if (!_context.Products.Any(x => x.Url == product.Url) && !_context.Products.Any(x => x.Code == product.Code))
+                if (!_context.Products.Where(x=>x.Id!=product.Id).Any(x => x.Url == product.Url) && !_context.Products.Where(x=>x.Id!=product.Id).Any(x => x.Code == product.Code))
                 {
                     _context.Entry(product).State = EntityState.Modified;
                     await _context.SaveChangesAsync();

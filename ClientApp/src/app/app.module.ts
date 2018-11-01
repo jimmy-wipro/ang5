@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { CleanupComponent } from './cleanup/cleanup.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    CleanupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'form', component: ProductFormComponent },
-      { path: 'form/:id', component: ProductFormComponent}
+      { path: 'form/:id', component: ProductFormComponent },
+      { path: 'clean', component: CleanupComponent }
     ])
   ],
   providers: [],
